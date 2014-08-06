@@ -1,0 +1,2 @@
+This plugin shows the name of the current procedure the cursor is in.
+To install this plugin, copy the two files from this directory into the User directory from Packages (.../Sublime Text 2/Packages/User).

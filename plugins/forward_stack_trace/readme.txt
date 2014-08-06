@@ -1,0 +1,3 @@
+This plugin creates a forward stack trace tree of the current file having as entry point the Main Block. 
+To install the plugin, copy the file ForwardStackTrace.py to "C:\Users\$user\AppData\Roaming\Sublime Text 2\Packages\User". If this path does not correspond to the one on your system, go to Tools -> New Plugin and paste the content of the file ForwardStackStrace.py into the newly created window and then save it into the default location.
+In order to make use of this functionality go to Preferences -> Key Bindings - User and add this line to the file that will open: { "keys": ["ctrl+alt+t"], "command": "tree" }. You can change the keyboard shortcut to whatever you like.
