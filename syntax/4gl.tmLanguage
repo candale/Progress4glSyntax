@@ -79,9 +79,9 @@
                         <key>comment</key>
                         <string>Variables provided by de language</string>
                         <key>match</key>
-                        <string>(?i)^[\s\t]*procedure\s+.+:</string>
+                        <string>(?i)^[\s\t]*procedure\s+.+</string>
                         <key>name</key>
-                        <string>meta.procedure.Progress4gl</string>
+                        <string>entity.name.function.Progress4gl</string>
                 </dict>
                 <dict>
                         <key>comment</key>
@@ -95,7 +95,7 @@
                         <key>comment</key>
                         <string>Keywords</string>
                         <key>match</key>
-                        <string>(?i)( between |call(?=\s+|$)| clipped|output |input |input-output |to |value[\s]*|(\s|^)close\s+(form|window)*|(\s|^)create\s+(temp\s+)?(table|index)(?=\s+|$)|database |\sreturning |declare |delete(?=\s|$)|display\s+|((\s|^)drop\s+(table|index)(\s|$))|((\s|^)fetch((\s+|$)|(\s+(first|last)\s+)))|(\s|^)from(\s+|$)|(\s+|^)free\s+|group by\s|(\s+|^)(desc|asc)(\s+|$)|(\s|^)insert\s+into(\s+|$)|((scroll)* cursor(?=\s)(\swith hold)*)|((top|right|bottom|left)\s+margin)|page length|(\s|^)open\s+(form|window)*|(\s|^)prepare |(^|\s)prompt\s|(^|\s)input by name(\s|$)|((start|finish)\s+report)|(\s|^)select(\s+|$)| spaces|(\s|^)update(\s+|$)|(\s|^)where(\s+|$)|(\s|^)output(?=\s|$)|(?&lt;=\s)to(?=\s|$)|order by|format( |$)|(first\s+)*page header|put |no-lock|no-error|in |unformatted |before group of|on (every|last) row|after group of| using |begin\s+work|commit\s+work|stream |close |VIEW-AS |this-procedure|INSTANTIATING-PROCEDURE|return-value |ALERT-BOX|INFORMATION|REPOSITION |TITLE|rollback\s+work|(\s+|^)values(\s+|$)|((\s|^)whenever\s+(any\s+)?error\s+(continue|stop)(\s|$))|(\s|^)run\s+|end input)</string>
+                        <string>(?i)( between |call(?=\s+|$)| clipped|output |\bquery\b|get |input |input-output |to |value[\s]*|(\s|^)close\s+(form|window)*|(\s|^)create\s+(temp\s+)?(table|index)(?=\s+|$)|database |\sreturning |declare |delete(?=\s|$)|display\s+|((\s|^)drop\s+(table|index)(\s|$))|((\s|^)fetch((\s+|$)|(\s+(first|last)\s+)))|(\s|^)from(\s+|$)|(\s+|^)free\s+|group by\s|(\s+|^)(desc|asc)(\s+|$)|(\s|^)insert\s+into(\s+|$)|((scroll)* cursor(?=\s)(\swith hold)*)|((top|right|bottom|left)\s+margin)|page length|(\s|^)open\s+(form|window)*|(\s|^)prepare |(^|\s)prompt\s|\berror-status\b|(^|\s)input by name(\s|$)|((start|finish)\s+report)|(\s|^)select(\s+|$)| spaces|(\s|^)update(\s+|$)|(\s|^)where(\s+|$)|(\s|^)output(?=\s|$)|(?&lt;=\s)to(?=\s|$)|\berror\b|order by|format( |$)|(first\s+)*page header|put |no-lock|no-error|in |unformatted |before group of|on (every|last) row|after group of| using |begin\s+work|commit\s+work|stream |close |VIEW-AS |this-procedure|INSTANTIATING-PROCEDURE|return-value |ALERT-BOX|INFORMATION|REPOSITION |TITLE|rollback\s+work|(\s+|^)values(\s+|$)|((\s|^)whenever\s+(any\s+)?error\s+(continue|stop)(\s|$))|(\s|^)run\s+|end input)</string>
                         <key>name</key>
                         <string>keyword.other.source.Progress4gl</string>
                 </dict>
@@ -161,7 +161,7 @@
                         <key>comment</key>
                         <string>Storage types</string>
                         <key>match</key>
-                        <string>(?i)(\schar(?=[\s\(,$]))|(\sdate(\s+|$)|decimal|handle|buffer | memptr|procedure |message |available |return|define |propath |input |init |parameter |variable |as |extent | smallint|publish |subscribe |character|integer|logical| float|temp-table |field |index |empty |let |no-undo| like |(end)* record|(((^|\s+)|(end\s+))globals))</string>
+                        <string>(?i)(\schar(?=[\s\(,$]))|\b(\sdate(\s+|$)|decimal|handle|buffer|locked|validate|memptr|procedure|message|available|return|define|propath|input|init |parameter|variable|as|extent|smallint|publish|subscribe|character|integer|logical|float|temp-table|field|index|empty|let|no-undo|like|(end)* record|(((^|\s+)|(end\s+))globals))\b</string>
                         <key>name</key>
                         <string>storage.type.source.Progress4gl</string>
                 </dict>
@@ -172,6 +172,31 @@
                         <string>(?i)((?&lt;=\s)(length|day|month|year|p_open|p_close)(?=\s*\(.*?\)))</string>
                         <key>name</key>
                         <string>support.function.source.Progress4gl</string>
+                </dict>
+
+                <dict>
+                        <key>captures</key>
+                        <dict>
+                            <key>1</key>
+                            <dict>
+                                <key>name</key>
+                                <string>punctuation.whitespace.function-call.leading.Progress4gl</string>
+                            </dict>
+                            <key>2</key>
+                            <dict>
+                                <key>name</key>
+                                <string>support.function.any-method.Progress4gl</string>
+                            </dict>
+                            <key>3</key>
+                            <dict>
+                                <key>name</key>
+                                <string>punctuation.definition.parameters.Progress4gl</string>
+                            </dict>
+                        </dict>
+                        <key>match</key>
+                        <string>(?x) (?: (?= \s )  (?:(?&lt;=else|new|return) | (?&lt;!\w)) (\s+))?(\b(?!(ARG_VAL|FGL_LASTKEY|AND|LINENO|ARR_COUNT|LENGTH|ASCII|MATCHES|ARR_CURR|MAX|BETWEEN...AND||MDY|AVG|MIN|CLIPPED|MONTH|COUNT|NUM_ARGS|COLUMN|NOT|DOWNSHIFT|PERCENT|CURRENT|OR|ERR_GET|SCR_LINE|DATE|PAGENO|ERR_PRINT|SET_COUNT|DATE|SPACE|ERR_QUIT|SHOWHELP|DAY|TIME|ERRORLOG|STARTLOG|EXTEND|TODAY|FGL_DRAWBOX|SQLEXIT|FIELD_TOUCHED|UNITS|FGL_GETENV|SUM|GET_FLDBUF|USING|FGL_KEYVAL|UPSHIFT|IN|WEEKDAY|INFIELD|WORDWRAP|IS|NULL|YEAR|LIKE)\s*\()(?:(?!NS)[A-Za-z_][A-Za-z0-9_]*+\b | :: )++)\s*(\()</string>
+                        <key>name</key>
+                        <string>meta.function-call.Progress4gl</string>
                 </dict>
         </array>
         <key>scopeName</key>
